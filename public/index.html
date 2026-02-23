@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Second Date?</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="card">
+        <h1 id="mainTitle"></h1>
+
+        <p>
+            We missed the beach…
+            but I can’t say I minded the company.
+        </p>
+
+        <p>
+            So… when are we making that sunset happen?😌
+        </p>
+
+        <label for="date">Select your Prefered Date:</label>
+        <input type="date" id="date" title="Select a date for the second date">
+
+        <label for="time">Select your Prefered Time:</label>
+        <input type="time" id="time" title="Select a time for the second date">
+
+        <label for="message">Any secret requests for attempt #2? 👀</label>
+        <textarea id="message" title="Enter an optional message"></textarea>
+
+        <button onclick="submitForm()">Send Answer 💌</button>
+
+        <p id="responseMessage"></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
