@@ -1,147 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Private Dashboard</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(to right, #fbc2eb, #a6c1ee);
-            min-height: 100vh;
-            padding: 40px;
-        }
+    <title>Private Dashboard 💌</title>
+    <link rel="stylesheet" href="dashboard.css">
 
-        .container {
-            display: flex;
-            gap: 30px;
-            max-width: 1200px;
-            margin: auto;
-        }
-
-        .panel {
-            flex: 1;
-            background: rgba(255,255,255,0.85);
-            -webkit-backdrop-filter: blur(12px);
-            backdrop-filter: blur(12px);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
-        h1 {
-            margin-top: 0;
-        }
-
-        .history-list {
-            max-height: 500px;
-            overflow-y: auto;
-            padding-right: 10px;
-        }
-
-        .history-item {
-            background: white;
-            border-radius: 15px;
-            padding: 15px;
-            margin-bottom: 15px;
-            transition: transform 0.2s ease;
-        }
-
-        .history-item:hover {
-            transform: translateY(-3px);
-        }
-
-        .timestamp {
-            font-size: 12px;
-            color: gray;
-        }
-
-        strong {
-            color: #444;
-        }
-    </style>
 </head>
+
 <body>
 
-<div class="container">
+    <div class="container">
 
-    <div class="panel">
-        <h1>Latest Response 💌</h1>
-        <div id="latest">Loading...</div>
+        <div class="panel">
+            <h1>Latest Response 💌</h1>
+            <div id="latest">Loading...</div>
+        </div>
+
+        <div class="panel">
+            <h1>Full History 📜</h1>
+            <div id="history" class="history-list">Loading...</div>
+        </div>
+
     </div>
 
-    <div class="panel">
-        <h1>Full History 📜</h1>
-        <div id="history" class="history-list">Loading...</div>
-    </div>
+    <script>
+        function formatEntry(item) {
 
-</div>
-
-<script>
-function loadDashboard() {
-
-    // Latest
-    fetch("/latest")
-        .then(res => res.json())
-        .then(data => {
-
-            if (!data.date) {
-                document.getElementById("latest").innerHTML =
-                    "<p>No responses yet 💭</p>";
-                return;
+            if (item.status === "rejected") {
+                return `
+            <div class="history-item rejected">
+                <strong>❌ Rejected</strong>
+                <div class="timestamp">
+                    ${new Date(item.timestamp).toLocaleString()}
+                </div>
+            </div>
+        `;
             }
 
-            document.getElementById("latest").innerHTML = `
-                <p><strong>Date:</strong> ${data.date}</p>
-                <p><strong>Time:</strong> ${data.time}</p>
-                <p><strong>Message:</strong> ${data.message || "None"}</p>
-                <p class="timestamp">
-                    ${new Date(data.timestamp).toLocaleString()}
-                </p>
-            `;
-        });
+            return `
+        <div class="history-item">
+            <strong>Accepted 💕</strong><br><br>
 
+            <strong>Date:</strong> ${item.date || "—"}<br>
+            <strong>Availability:</strong> ${item.availability || "—"}<br>
 
-    // Full history
-    fetch("/all")
-        .then(res => res.json())
-        .then(data => {
+            ${item.startTime && item.endTime
+                    ? `<strong>Time Range:</strong> ${item.startTime} - ${item.endTime}<br>`
+                    : ""
+                }
 
-            if (!Array.isArray(data) || data.length === 0) {
-                document.getElementById("history").innerHTML =
-                    "<p>No history yet.</p>";
-                return;
-            }
+            <strong>Activities:</strong>
+            ${item.activities && item.activities.length
+                    ? item.activities.join(", ")
+                    : "None"
+                }<br>
 
-            data.sort((a, b) =>
-                new Date(b.timestamp) - new Date(a.timestamp)
-            );
+            ${item.foodSuggestion
+                    ? `<strong>Food Suggestion:</strong> ${item.foodSuggestion}<br>`
+                    : ""
+                }
 
-            let html = "";
+            ${item.message
+                    ? `<strong>Extra Note:</strong> ${item.message}<br>`
+                    : ""
+                }
 
-            data.forEach((item, index) => {
-                html += `
-                    <div class="history-item">
-                        <p><strong>#${index + 1}</strong></p>
-                        <p>Date: ${item.date}</p>
-                        <p>Time: ${item.time}</p>
-                        <p>Message: ${item.message || "None"}</p>
-                        <p class="timestamp">
-                            ${new Date(item.timestamp).toLocaleString()}
-                        </p>
-                    </div>
-                `;
-            });
+            <div class="timestamp">
+                ${new Date(item.timestamp).toLocaleString()}
+            </div>
+        </div>
+    `;
+        }
 
-            document.getElementById("history").innerHTML = html;
-        });
-}
+        function loadDashboard() {
 
-loadDashboard();
-setInterval(loadDashboard, 3000);
-</script>
+            fetch("/latest")
+                .then(res => res.json())
+                .then(data => {
+                    if (!data.timestamp) {
+                        document.getElementById("latest").innerHTML =
+                            "<p>No responses yet 💭</p>";
+                        return;
+                    }
+                    document.getElementById("latest").innerHTML =
+                        formatEntry(data);
+                });
+
+            fetch("/all")
+                .then(res => res.json())
+                .then(data => {
+
+                    if (!Array.isArray(data) || !data.length) {
+                        document.getElementById("history").innerHTML =
+                            "<p>No history yet.</p>";
+                        return;
+                    }
+
+                    data.sort((a, b) =>
+                        new Date(b.timestamp) - new Date(a.timestamp)
+                    );
+
+                    document.getElementById("history").innerHTML =
+                        data.map(item => formatEntry(item)).join("");
+                });
+        }
+
+        loadDashboard();
+        setInterval(loadDashboard, 3000);
+    </script>
 
 </body>
+
 </html>

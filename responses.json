@@ -1,0 +1,23 @@
+[
+  {
+    "date": null,
+    "time": null,
+    "message": null,
+    "status": "rejected",
+    "timestamp": "2026-02-24T13:26:40.687Z"
+  },
+  {
+    "date": "2026-02-26",
+    "time": "21:34",
+    "message": "HEHE",
+    "status": "accepted",
+    "timestamp": "2026-02-24T13:34:30.076Z"
+  },
+  {
+    "date": null,
+    "time": null,
+    "message": null,
+    "status": "rejected",
+    "timestamp": "2026-02-24T13:56:03.513Z"
+  }
+]

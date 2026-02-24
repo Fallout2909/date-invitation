@@ -1,0 +1,55 @@
+ * { 
+    box-sizing: border-box; 
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to right, #fbc2eb, #a6c1ee);
+    min-height: 100vh;
+    padding: 30px;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.panel {
+    flex: 1;
+    min-width: 320px;
+    background: rgba(255,255,255,0.9);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+
+h1 { margin-top: 0; }
+
+.history-list {
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.history-item {
+    background: white;
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-left: 5px solid #ff7eb3;
+}
+
+.rejected {
+    border-left: 5px solid #888;
+}
+
+.timestamp {
+    font-size: 12px;
+    color: gray;
+    margin-top: 8px;
+}
