@@ -10,29 +10,40 @@
 
 <body>
     <div class="card">
-        <h1 id="mainTitle"></h1>
 
-        <p>
-            We missed the beach…
-            but I can’t say I minded the company.
-        </p>
+        <!-- Step 1: Question Screen -->
+        <div id="step1">
+            <h1>Missyelin… 🌅</h1>
 
-        <p>
-            So… when are we making that sunset happen?😌
-        </p>
+            <p style="margin-top:15px;">
+                Can I take you out on a proper sunset date this time?
+            </p>
 
-        <label for="date">Select your Prefered Date:</label>
-        <input type="date" id="date" title="Select a date for the second date">
+            <button onclick="goToStep2()">Yes 😌</button>
+            <button id="thinkBtn" onclick="playfulNo()" style="margin-top:10px; background:#ddd; color:#333;">
+                Let me think 🤔
+            </button>
+        </div>
 
-        <label for="time">Select your Prefered Time:</label>
-        <input type="time" id="time" title="Select a time for the second date">
 
-        <label for="message">Any secret requests for attempt #2? 👀</label>
-        <textarea id="message" title="Enter an optional message"></textarea>
+        <!-- Step 2: Date Selection (Hidden Initially) -->
+        <div id="step2" style="display:none;">
 
-        <button onclick="submitForm()">Send Answer 💌</button>
+            <h1>Sunset attempt #2 💕</h1>
 
-        <p id="responseMessage"></p>
+            <label>Select your preferred date:</label>
+            <input type="date" id="date">
+
+            <label>Select your preferred time:</label>
+            <input type="time" id="time">
+
+            <label>Anything I should know? 👀</label>
+            <textarea id="message"></textarea>
+
+            <button onclick="submitForm()">Lock it in 🌅</button>
+
+        </div>
+
     </div>
 
     <script src="script.js"></script>

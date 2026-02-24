@@ -1,24 +1,79 @@
-// 🌸 Change this to her name
-const herName = "Missyelin"; // <-- PUT HER NAME HERE
+// 🌸 Put her name here
+const herName = "Missyelin";
 
-// Set title dynamically when page loads
+// Track playful "Let me think" clicks
+let thinkClicks = 0;
+
+
+// 🌅 When page loads
 document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("mainTitle").innerText =
-        `Sunset attempt #2, ${herName}?`;
+    const title = document.querySelector("#step1 h1");
+    if (title) {
+        title.innerText = `${herName}… 🌅`;
+    }
 
-    // Add fade-in effect
     document.querySelector(".card").classList.add("fade-in");
 });
 
 
-// Submit form
+// 😌 When she clicks YES
+function goToStep2() {
+    const step1 = document.getElementById("step1");
+    const step2 = document.getElementById("step2");
+
+    step1.style.display = "none";
+    step2.style.display = "block";
+
+    step2.classList.add("fade-in");
+}
+
+
+// 😏 Playful "Let me think" escalation
+function playfulNo() {
+    const btn = document.getElementById("thinkBtn");
+    thinkClicks++;
+
+    if (thinkClicks === 1) {
+        btn.innerText = "Are you sure? 👉👈";
+    }
+    else if (thinkClicks === 2) {
+        btn.innerText = "Hmm… still thinking? 🥲";
+    }
+    else if (thinkClicks === 3) {
+
+        const card = document.querySelector(".card");
+
+        card.innerHTML = `
+            <h1>Alright… I'll get it 🥲</h1>
+            <p style="margin-top:20px;">
+                Maybe I'll try again another time.
+            </p>
+        `;
+
+        card.classList.add("fade-in");
+
+        // After 3 seconds, fade out
+        setTimeout(() => {
+            document.body.style.transition = "opacity 1s ease";
+            document.body.style.opacity = "0";
+
+            setTimeout(() => {
+                window.location.href = "about:blank";
+            }, 1000);
+
+        }, 3000);
+    }
+}
+
+
+// 💌 Submit form
 function submitForm() {
     const date = document.getElementById("date").value;
     const time = document.getElementById("time").value;
     const message = document.getElementById("message").value;
 
     if (!date || !time) {
-        alert("Please choose a date and time 🌸");
+        alert("Pick a date and time first 😌");
         return;
     }
 
@@ -39,18 +94,29 @@ function submitForm() {
             card.classList.add("fade-out");
 
             setTimeout(() => {
+
                 card.innerHTML = `
-                <h1>Thank you, Missyelin 💞</h1>
-                <p style="margin-top:15px;">${date} at ${time}</p>
-                <p style="margin-top:20px;">Let's try to finally catch that sunset 🌅</p>
-                <p style="font-style: italic; opacity: 0.8;">But honestly… I enjoyed the company more anyway.</p>
-                `;
+                <h1>It’s a date, ${herName} 💞</h1>
+
+                <p style="margin-top:15px;">
+                    ${date} at ${time}
+                </p>
+
+                <p style="margin-top:20px;">
+                    Let’s try to finally catch that sunset 🌅
+                </p>
+
+                <p style="font-style: italic; opacity: 0.8;">
+                    But honestly… I’m already looking forward to the company more.
+                </p>
+            `;
 
                 card.classList.remove("fade-out");
                 card.classList.add("fade-in");
                 card.classList.add("pop-in");
 
             }, 400);
+
         })
         .catch(error => {
             console.error("Error:", error);
