@@ -9,7 +9,7 @@ let thinkClicks = 0;
 document.addEventListener("DOMContentLoaded", () => {
     const title = document.querySelector("#step1 h1");
     if (title) {
-        title.innerText = `${herName}… 🌅`;
+        title.innerText = `${herName}…`;
     }
 
     document.querySelector(".card").classList.add("fade-in");
@@ -103,7 +103,7 @@ function submitForm() {
                 </p>
 
                 <p style="margin-top:20px;">
-                    Let’s try to finally catch that sunset 🌅
+                    Let's make it a day to remember! 🥰 
                 </p>
 
                 <p style="font-style: italic; opacity: 0.8;">
