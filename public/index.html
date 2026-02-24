@@ -1,86 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Second Date hehe</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Second Date hehe</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-<div class="card">
+    <div class="card">
 
-<!-- STEP 1 -->
-<div id="step1">
-    <h1>Missyelin…</h1>
+        <!-- STEP 1 -->
+        <div id="step1">
+            <h1>Missyelin…</h1>
 
-    <p style="margin-top:15px;">
-        Since I didn't properly planned our first date, can I make it up to you by planning our second date?
-    </p>
+            <p style="margin-top:15px;">
+                Since I didn't properly planned our first date, can I make it up to you by planning our second date?
+            </p>
 
-    <p>
-        Can I officially take you out this time?
-    </p>
+            <p>
+                Can I officially take you out this time?
+            </p>
 
-    <button onclick="goToStep2()">Yes 😌</button>
+            <button onclick="goToStep2()">Yes 😌</button>
 
-    <button id="thinkBtn" onclick="playfulNo()" 
-        style="margin-top:10px; background:#eee; color:#333;">
-        Let me think 🤔
-    </button>
-</div>
+            <button id="thinkBtn" onclick="playfulNo()" style="margin-top:10px; background:#eee; color:#333;">
+                Let me think 🤔
+            </button>
+        </div>
 
-<!-- STEP 2 -->
-<div id="step2" style="display:none;">
+        <!-- STEP 2 -->
+        <div id="step2" style="display:none;">
 
-    <h1>Let's plan this properly 😌</h1>
+            <h1>Let's plan this properly 😌</h1>
 
-    <label>Pick a date:</label>
-    <input type="date" id="date">
+            <label>Pick a date:</label>
+            <input type="date" id="date">
 
-    <label>How free are you?</label>
-    <select id="availability" onchange="handleAvailabilityChange()">
-        <option value="">Select one</option>
-        <option value="whole">Whole day 🌞</option>
-        <option value="half">Half day</option>
-        <option value="day">Day time 🌤</option>
-        <option value="night">Night time 🌙</option>
-        <option value="custom">Pick a time range</option>
-    </select>
+            <label>How free are you?</label>
+            <select id="availability" onchange="handleAvailabilityChange()">
+                <option value="">Select one</option>
+                <option value="whole">Whole day 🌞</option>
+                <option value="half">Half day</option>
+                <option value="day">Day time 🌤</option>
+                <option value="night">Night time 🌙</option>
+                <option value="custom">Pick a time range</option>
+            </select>
 
-    <div id="timeRange" style="display:none;">
-        <label>Start time:</label>
-        <input type="time" id="startTime">
+            <div id="timeRange" style="display:none;">
+                <label>Start time:</label>
+                <input type="time" id="startTime">
 
-        <label>End time:</label>
-        <input type="time" id="endTime">
+                <label>End time:</label>
+                <input type="time" id="endTime">
+            </div>
+
+            <label>What should we do? 👀</label>
+
+            <div class="activities-grid">
+
+                <label class="activity-card">
+                    <input type="checkbox" value="Sunset 🌅" class="activity">
+                    🌅 Sunset
+                </label>
+
+                <label class="activity-card">
+                    <input type="checkbox" value="Snooker 🎱" class="activity">
+                    🎱 Snooker
+                </label>
+
+                <label class="activity-card">
+                    <input type="checkbox" value="Café ☕" class="activity">
+                    ☕ Café
+                </label>
+
+                <label class="activity-card">
+                    <input type="checkbox" value="Movie 🎬" class="activity">
+                    🎬 Movie
+                </label>
+
+                <label class="activity-card">
+                    <input type="checkbox" value="Lunch 🍽" class="activity">
+                    🍽 Lunch
+                </label>
+
+                <label class="activity-card">
+                    <input type="checkbox" value="Dinner 🍝" class="activity">
+                    🍝 Dinner
+                </label>
+
+            </div>
+
+            <label>What are you craving? 🍜</label>
+            <input type="text" id="foodSuggestion" placeholder="Indonesian, Japenese, Ayam Gepuk? haha">
+
+            <label>Anything else that you wanted me to know? 💭</label>
+            <textarea id="message" placeholder="Write anything you want. I'm not judging haha. You can leave it blank too."></textarea>
+
+            <button onclick="submitForm()">Let's make it happen 🌅</button>
+        </div>
+
     </div>
 
-    <label>What should we do? 👀</label>
-
-    <div>
-        <input type="checkbox" value="Sunset 🌅" class="activity"> Sunset 🌅<br>
-        <input type="checkbox" value="Snooker 🎱" class="activity"> Snooker 🎱<br>
-        <input type="checkbox" value="Café ☕" class="activity"> Café ☕<br>
-        <input type="checkbox" value="Movie 🎬" class="activity"> Movie 🎬<br>
-
-        <input type="checkbox" value="Lunch 🍽" class="activity" id="lunchOption"> Lunch 🍽<br>
-        <input type="checkbox" value="Dinner 🍝" class="activity" id="dinnerOption"> Dinner 🍝<br>
-
-    </div>
-
-    <label>What are you craving? 🍜</label>
-    <input type="text" id="foodSuggestion" 
-        placeholder="Indonesian, Japenese, Ayam Gepuk? haha">
-
-    <label>Anything else that you wanted me to know? 💭</label>
-    <textarea id="message"></textarea>
-
-    <button onclick="submitForm()">Let's make it happen 🌅</button>
-</div>
-
-</div>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>

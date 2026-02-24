@@ -19,5 +19,16 @@
     "message": null,
     "status": "rejected",
     "timestamp": "2026-02-24T13:56:03.513Z"
+  },
+  {
+    "date": null,
+    "availability": null,
+    "startTime": null,
+    "endTime": null,
+    "activities": [],
+    "foodSuggestion": null,
+    "message": null,
+    "status": "rejected",
+    "timestamp": "2026-02-24T16:04:43.347Z"
   }
 ]

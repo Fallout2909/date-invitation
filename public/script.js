@@ -26,7 +26,7 @@ function playfulNo() {
         });
 
         document.querySelector(".card").innerHTML = `
-            <h1>Alright… I’ll get it 😌</h1>
+            <h1>Alright… I’ll get it 🥲</h1>
             <p style="margin-top:20px;">
                 Maybe I’ll try again another time.
             </p>
@@ -97,3 +97,10 @@ function submitForm() {
         `;
     });
 }
+
+document.addEventListener("change", function(e) {
+    if (e.target.classList.contains("activity")) {
+        const card = e.target.closest(".activity-card");
+        card.classList.toggle("selected", e.target.checked);
+    }
+});

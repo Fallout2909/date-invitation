@@ -84,6 +84,64 @@ button:active {
     transform: scale(0.97);
 }
 
+.activities-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.activity-card {
+    background: #f9f9f9;
+    padding: 10px;
+    border-radius: 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 14px;
+    border: 1px solid #ddd;
+}
+
+.activity-card:hover {
+    transform: translateY(-2px);
+}
+
+.activity-card input {
+    display: none;
+}
+
+.activity-card.selected {
+    background: #ffe4f1;
+    border-color: #ff7eb3;
+}
+
+/* Custom Dropdown Styling */
+select {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 15px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    background-color: #fff;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    /* Custom arrow */
+    background-image: url("data:image/svg+xml;utf8,<svg fill='%23ff7eb3' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 18px;
+}
+
+select:focus {
+    border-color: #ff7eb3;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255,126,179,0.2);
+}
+
 @keyframes floatIn {
     from {
         opacity: 0;
