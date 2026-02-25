@@ -88,9 +88,9 @@ function submitForm() {
             status: "accepted"
         })
     })
-    .then(res => res.json())
-    .then(() => {
-        document.querySelector(".card").innerHTML = `
+        .then(res => res.json())
+        .then(() => {
+            document.querySelector(".card").innerHTML = `
             <h1>It's a date, ${herName} 💞</h1>
             <p style="margin-top:15px;">
                 ${date}
@@ -99,13 +99,17 @@ function submitForm() {
                 ${startTime} – ${endTime}
             </p>
             <p style="margin-top:20px;">
-                I hope at the end of the day, we both enjoy ourselves hehe
+                I'll text you the details later, but if you have any other suggestions or changes, just let me know!
+            </p>
+
+            <p style="margin-top:20px;">
+                I hope at the end of the day, we both enjoy ourselves hehe. You can close this tab now. 
             </p>
         `;
-    });
+        });
 }
 
-document.addEventListener("change", function(e) {
+document.addEventListener("change", function (e) {
     if (e.target.classList.contains("activity")) {
         const card = e.target.closest(".activity-card");
         card.classList.toggle("selected", e.target.checked);
