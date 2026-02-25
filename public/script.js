@@ -59,18 +59,18 @@ function handleAvailabilityChange() {
 
 function submitForm() {
     const date = document.getElementById("date").value;
-    const availability = document.getElementById("availability").value;
-    const startTime = document.getElementById("startTime")?.value;
-    const endTime = document.getElementById("endTime")?.value;
+    const startTime = document.getElementById("startTime").value;
+    const endTime = document.getElementById("endTime").value;
     const message = document.getElementById("message").value;
     const foodSuggestion = document.getElementById("foodSuggestion").value;
+    const activitySuggestion = document.getElementById("activitySuggestion").value;
 
     const activities = Array.from(
         document.querySelectorAll(".activity:checked")
     ).map(el => el.value);
 
-    if (!date || !availability) {
-        alert("Pick a date and availability first 😌");
+    if (!date || !startTime || !endTime) {
+        alert("Pick a date and time range first 😌");
         return;
     }
 
@@ -79,10 +79,10 @@ function submitForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
             date,
-            availability,
             startTime,
             endTime,
             activities,
+            activitySuggestion,
             foodSuggestion,
             message,
             status: "accepted"
@@ -92,8 +92,15 @@ function submitForm() {
     .then(() => {
         document.querySelector(".card").innerHTML = `
             <h1>It's a date, ${herName} 💞</h1>
-            <p style="margin-top:15px;">${date}</p>
-            <p>Let's hope all goes as planned haha. </p>
+            <p style="margin-top:15px;">
+                ${date}
+            </p>
+            <p>
+                ${startTime} – ${endTime}
+            </p>
+            <p style="margin-top:20px;">
+                I hope at the end of the day, we both enjoy ourselves hehe
+            </p>
         `;
     });
 }

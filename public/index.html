@@ -33,33 +33,22 @@
         <!-- STEP 2 -->
         <div id="step2" style="display:none;">
 
-            <h1>Let's plan this properly 😌</h1>
+            <h1>Let's plan this properly</h1>
 
             <label>Pick a date:</label>
             <input type="date" id="date">
 
-            <label>How free are you?</label>
-            <select id="availability" onchange="handleAvailabilityChange()">
-                <option value="">Select one</option>
-                <option value="whole">Whole day 🌞</option>
-                <option value="half">Half day</option>
-                <option value="day">Day time 🌤</option>
-                <option value="night">Night time 🌙</option>
-                <option value="custom">Pick a time range</option>
-            </select>
-
-            <div id="timeRange" style="display:none;">
-                <label>Start time:</label>
+            <label>What time works for you?</label>
+            <div class="time-range">
                 <input type="time" id="startTime">
-
-                <label>End time:</label>
+                <span>to</span>
                 <input type="time" id="endTime">
             </div>
 
-            <label>What should we do? 👀</label>
+            <!-- Activities section -->
+            <label>What should we do? 👀 (You can pick more than one)</label>
 
             <div class="activities-grid">
-
                 <label class="activity-card">
                     <input type="checkbox" value="Sunset 🌅" class="activity">
                     🌅 Sunset
@@ -81,26 +70,44 @@
                 </label>
 
                 <label class="activity-card">
-                    <input type="checkbox" value="Lunch 🍽" class="activity">
-                    🍽 Lunch
+                    <input type="checkbox" value="Movie 🎬" class="activity">
+                    🏔 Hiking
                 </label>
 
                 <label class="activity-card">
-                    <input type="checkbox" value="Dinner 🍝" class="activity">
-                    🍝 Dinner
+                    <input type="checkbox" value="Movie 🎬" class="activity">
+                    🐱 Cat Cafe
                 </label>
-
             </div>
 
+            <label>Have something else in mind? 💡</label>
+                <input type="text" id="activitySuggestion" placeholder="Bowling? Arcade? Art gallery? 😌">
+
+                <!-- Food section -->
+                <label>Which one you prefer or you want both?</label>
+                <div class="activities-grid">
+                    <label class="activity-card">
+                        <input type="checkbox" value="Lunch 🍽" class="activity">
+                        🍽 Lunch
+                    </label>
+
+                    <label class="activity-card">
+                        <input type="checkbox" value="Dinner 🍝" class="activity">
+                        🍝 Dinner
+                    </label>
+                </div>
+
             <label>What are you craving? 🍜</label>
-            <input type="text" id="foodSuggestion" placeholder="Indonesian, Japenese, Ayam Gepuk? haha">
+            <input type="text" id="foodSuggestion" placeholder="Indonesian, Japanese, Ayam Gepuk? haha">
 
-            <label>Anything else that you wanted me to know? 💭</label>
-            <textarea id="message" placeholder="Write anything you want. I'm not judging haha. You can leave it blank too."></textarea>
 
-            <button onclick="submitForm()">Let's make it happen</button>
+            <!-- Message section -->
+            <label>Anything else you want me to know? 💭</label>
+            <textarea id="message" placeholder="Share your thoughts, you can leave it blank too"></textarea>
+
+            <button onclick="submitForm()">Yippe hehe</button>
+
         </div>
-
     </div>
 
     <script src="script.js"></script>
